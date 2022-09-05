@@ -1,16 +1,14 @@
-from lib2to3.pgen2 import token
 import time
 import readline
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--incognito")
 driver = webdriver.Chrome("/home/yayahc/Documents/CodeParrot/botAntp/chromedriver",chrome_options=chrome_options)
+driver.get("https://www.antp.io/#/register?inviteCode=668550")
 
-def bot(number, password, mytoken):
-    driver.get(f"https://www.antp.io/#/register?inviteCode={mytoken}")
+def bot(number, password):
     #sign
     number_input_textbox = driver.find_element(By.CSS_SELECTOR, 'input[type="tel"]')
     number_input_textbox.send_keys(number)
@@ -23,26 +21,18 @@ def bot(number, password, mytoken):
     time.sleep(2)
 
     #exit
-    driver.get(f"https://www.antp.io/#/register?inviteCode={mytoken}")
+    driver.get("https://www.antp.io/#/register?inviteCode=668550")
     time.sleep(1)
     
 
 src = []
 password = 'azertyuiop'
-src_file = open("src_file", "r")
+src_file = open("api8000", "r")
 
 src_number = src_file.readlines()
 for item in src_number:
     src.append(item.strip('\n'))
 
-final_token = []
-token = open("token", "r")
-mytoken = token.readlines()[0]
-for item in mytoken:
-    final_token.append(item.strip('\n'))
-
-for item in final_token:
-    for number_item in src:    
-        bot (number_item,password, item)
-
+for number_item in src:    
+    bot (number_item,password)
 print("ok je l'ai")
