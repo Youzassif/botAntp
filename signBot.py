@@ -3,7 +3,7 @@ import time
 import readline
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-
+from number_generator import generator
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--incognito")
@@ -29,20 +29,15 @@ def bot(number, password, mytoken):
 
 src = []
 password = 'azertyuiop'
-src_file = open("src_file", "r")
-
-src_number = src_file.readlines()
-for item in src_number:
-    src.append(item.strip('\n'))
 
 final_token = []
 token = open("token", "r")
 mytoken = token.readlines()[0]
 for item in mytoken:
     final_token.append(item.strip('\n'))
-
-for item in final_token:
-    for number_item in src:    
-        bot (number_item,password, item)
+    
+src = generator(10)
+for number_item in src:    
+    bot (number_item,password, mytoken)
 
 print("ok je l'ai")
