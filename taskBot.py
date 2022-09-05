@@ -38,7 +38,7 @@ def bot(number, password):
 
 src = []
 password = 'azertyuiop'
-src_file = open("do", "r")
+src_file = open("taskSrc", "r")
 
 src_number = src_file.readlines()
 for item in src_number:
