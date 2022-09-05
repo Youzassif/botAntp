@@ -12,14 +12,14 @@ def bot(number, password):
 
     #login
     driver.get("https://www.antp.io/#/login")
-    time.sleep(4)
+    time.sleep(2)
     log_number_input_textbox = driver.find_element(By.XPATH, "//input[@placeholder='Veuillez saisir votre numéro de téléphone']")
     log_number_input_textbox.send_keys(number)
     log_password_input_textbox = driver.find_element(By.CSS_SELECTOR, 'input[type="password"]')
     log_password_input_textbox.send_keys(password)
     login_button = driver.find_element("class name","login-btn")
     login_button.click()
-    time.sleep(15)
+    time.sleep(3)
 
     #do task ... a revoir
     driver.get("https://www.antp.io/#/minhas")  
